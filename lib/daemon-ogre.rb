@@ -88,7 +88,6 @@ begin
         return port
       rescue Errno::EADDRINUSE
         port = port.to_i + 1  if port < max_port+1
-        break if port = max_port || port > max_port
         retry
       end
 
