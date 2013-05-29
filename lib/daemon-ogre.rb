@@ -24,8 +24,6 @@ begin
   App.app_name  = $0
   App.debug     = false
 
-
-
   #OgreClassMethods
   begin
     class << self
@@ -183,6 +181,15 @@ begin
       end
     end
 
+    def process_running?(input)
+      begin
+        Process.getpgid input.chomp.to_i
+        return true
+      rescue Exception
+        return false
+      end
+    end
+
     end
   end
 
@@ -270,6 +277,10 @@ begin
                      DaemonOgre::App.pid_path,
                      DaemonOgre::App.log_path,
                      ('./var/daemon.stderr.log')
+      end
+
+      def debug
+        App.debug=true
       end
 
       def help
@@ -384,20 +395,21 @@ begin
             File.new("#{File.dirname(__FILE__)}/#{DaemonOgre::App.pid_path}", "a+").write Process.pid.to_s+"\n"
           end
         rescue Exception => ex
-          error_logger(ex,"#{__FILE__} #{__LINE__}")
+          error_logger(ex)
         end
       end
 
       def pid_check
-        if File.exist? File.dirname(__FILE__)+DaemonOgre::App.pid_path
-          puts "checking pids:"                                         if App.debug
-          File.open(DaemonOgre::App.pid_path).each_line do |row|
-            puts "#{row}: #{process_running?(row)}"                     if App.debug
+        if File.exist?(File.expand_path(App.pid_path))
+          puts "checking pidfile:"
+          text = File.open(File.expand_path(App.pid_path)).read
+          text.each_line do |line|
+            puts "#{line.chomp}:\t#{DaemonOgre.process_running?(line)}"
           end
         else
           puts "missing pid file (with default path) "+\
           "\nif you specificated one manualy pls type"+\
-          " the path first in with '-p xy/xzt.pid'"                     if App.debug
+          " the path first in with '-p xy/xzt.pid'"
         end
       end
 
