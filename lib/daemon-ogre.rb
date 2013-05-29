@@ -332,7 +332,7 @@ begin
       end
 
       def terminate
-        Process.exit
+        Process.exit if DaemonOgre::App.terminate
       end
 
       def continue?
