@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/adamluzsi/daemon-ogre"
   gem.license = "MIT"
   gem.summary = %Q{Let the Ogre Do the hard work}
-  gem.description = %Q{This gem made for easy application control.}
+  gem.description = %Q{This gem is made for one purpose. Ruby meant to be for easy use, not hard code coding! And in terms for this, ogre will aid you in the brute way... you need load a whole bunch of folders to your rack application ? do it! you want one nice hash for config constant? sure you can! you want have start/stop/status/restart/etc argument commands from terminal to see does your app(s) running or not ? there you go! You need an easy way to do the classic way of daemonise your awsome app? there will be no problem :) so all you need is enjoy your code!}
   gem.email = "adam.luzsi@@ppt-consulting.net"
   gem.authors = ["adam.luzsi"]
   # dependencies defined in Gemfile

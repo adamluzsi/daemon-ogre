@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = "daemon-ogre"
-  s.version = "1.1.7"
+  s.version = "1.1.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["adam.luzsi"]
   s.date = "2013-05-29"
-  s.description = "This gem made for easy application control."
+  s.description = "This gem is made for one purpose. Ruby meant to be for easy use, not hard code coding! And in terms for this, ogre will aid you in the brute way... you need load a whole bunch of folders to your rack application ? do it! you want one nice hash for config constant? sure you can! you want have start/stop/status/restart/etc argument commands from terminal to see does your app(s) running or not ? there you go! You need an easy way to do the classic way of daemonise your awsome app? there will be no problem :) so all you need is enjoy your code!"
   s.email = "adam.luzsi@@ppt-consulting.net"
   s.extra_rdoc_files = [
     "LICENSE.txt",
