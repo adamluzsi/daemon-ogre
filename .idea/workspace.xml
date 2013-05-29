@@ -4,7 +4,7 @@
     <list default="true" id="3ea70ce4-bd7f-4c44-adca-77b81705a432" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/daemon-ogre.rb" afterPath="$PROJECT_DIR$/lib/daemon-ogre.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test_daemon-ogre.rb" afterPath="$PROJECT_DIR$/test/test_daemon-ogre.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/var/log/log_file_name" afterPath="$PROJECT_DIR$/test/var/log/log_file_name" />
     </list>
     <ignored path="daemon-ogre.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,19 +23,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="helper.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../lepton-backend/helper.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="198" column="34" selection-start="5316" selection-end="5318" vertical-scroll-proportion="-17.870968">
+              <folding>
+                <element signature="e#4413#4723#0" expanded="true" />
+                <element signature="e#6721#6878#0" expanded="true" />
+                <element signature="e#6920#7091#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="daemon-ogre.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/daemon-ogre.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="441" column="0" selection-start="13687" selection-end="13687" vertical-scroll-proportion="-3.387097">
+            <state line="265" column="77" selection-start="7872" selection-end="7872" vertical-scroll-proportion="89.6129">
               <folding>
-                <element signature="e#16#13203#0" expanded="false" />
-                <element signature="e#24#13199#2" expanded="false" />
-                <element signature="e#55#309#0" expanded="false" />
                 <element signature="e#65#303#2" expanded="false" />
                 <element signature="e#81#295#2" expanded="false" />
-                <element signature="e#519#5512#0" expanded="false" />
-                <element signature="e#529#5506#2" expanded="false" />
-                <element signature="e#644#817#0" expanded="false" />
+                <element signature="e#577#2208#0" expanded="true" />
                 <element signature="e#825#998#0" expanded="false" />
                 <element signature="e#1300#1939#0" expanded="false" />
                 <element signature="e#1441#1929#0" expanded="false" />
@@ -54,64 +62,33 @@
                 <element signature="e#4891#5133#2" expanded="false" />
                 <element signature="e#4975#5119#0" expanded="false" />
                 <element signature="e#5369#5489#2" expanded="false" />
-                <element signature="e#5532#8116#0" expanded="false" />
-                <element signature="e#5542#7498#0" expanded="false" />
-                <element signature="e#5542#7498#0" expanded="false" />
+                <element signature="e#5542#7498#2" expanded="false" />
                 <element signature="e#5691#5935#0" expanded="false" />
                 <element signature="e#5745#5925#2" expanded="false" />
                 <element signature="e#6016#6339#0" expanded="false" />
                 <element signature="e#6124#6185#0" expanded="false" />
-                <element signature="e#5691#7490#1" expanded="false" />
                 <element signature="e#6475#7169#0" expanded="false" />
                 <element signature="e#7243#7490#0" expanded="false" />
-                <element signature="e#5542#8110#1" expanded="false" />
-                <element signature="e#8136#13194#0" expanded="false" />
-                <element signature="e#8146#13188#2" expanded="false" />
-                <element signature="e#8185#13182#0" expanded="false" />
-                <element signature="e#9918#10622#2" expanded="false" />
-                <element signature="e#9934#10533#1" expanded="false" />
-                <element signature="e#10096#10373#0" expanded="false" />
-                <element signature="e#10119#10357#1" expanded="false" />
-                <element signature="e#9934#10533#1" expanded="false" />
-                <element signature="e#10812#10964#0" expanded="false" />
-                <element signature="e#10841#10952#1" expanded="false" />
-                <element signature="e#11019#11444#0" expanded="false" />
-                <element signature="e#11048#11432#1" expanded="false" />
-                <element signature="e#11086#11418#1" expanded="false" />
-                <element signature="e#11500#11648#0" expanded="false" />
-                <element signature="e#11529#11636#1" expanded="false" />
-                <element signature="e#11682#12666#2" expanded="false" />
-                <element signature="e#11698#12596#1" expanded="false" />
-                <element signature="e#12006#12470#0" expanded="false" />
-                <element signature="e#12100#12454#0" expanded="false" />
-                <element signature="e#12295#12436#0" expanded="false" />
-                <element signature="e#12706#13163#2" expanded="false" />
-                <element signature="e#12877#12972#0" expanded="false" />
-                <element signature="e#13219#13676#0" expanded="false" />
-                <element signature="e#13227#13404#0" expanded="false" />
-                <element signature="e#13242#13398#2" expanded="false" />
-                <element signature="e#13687#16507#0" expanded="false" />
-                <element signature="e#13695#16503#2" expanded="false" />
-                <element signature="e#13717#16183#0" expanded="false" />
-                <element signature="e#13745#16175#1" expanded="false" />
-                <element signature="e#13894#16175#0" expanded="false" />
-                <element signature="e#13909#14242#0" expanded="false" />
-                <element signature="e#14253#14359#0" expanded="false" />
-                <element signature="e#14408#15548#0" expanded="false" />
-                <element signature="e#14442#15536#1" expanded="false" />
-                <element signature="e#15579#15886#0" expanded="false" />
-                <element signature="e#15970#16164#0" expanded="false" />
-                <element signature="e#16214#16497#0" expanded="false" />
+                <element signature="e#8083#8923#0" expanded="true" />
+                <element signature="e#8931#8975#0" expanded="true" />
+                <element signature="e#8983#9195#0" expanded="true" />
+                <element signature="e#9203#9366#0" expanded="true" />
+                <element signature="e#9374#10114#0" expanded="true" />
+                <element signature="e#10174#10232#0" expanded="true" />
+                <element signature="e#10240#10439#0" expanded="true" />
+                <element signature="e#10447#10919#0" expanded="true" />
+                <element signature="e#10927#11123#0" expanded="true" />
+                <element signature="e#11131#12141#0" expanded="true" />
+                <element signature="e#11471#11935#0" expanded="false" />
+                <element signature="e#11565#11919#0" expanded="false" />
+                <element signature="e#11760#11901#0" expanded="false" />
+                <element signature="e#12149#12638#0" expanded="true" />
+                <element signature="e#12707#12863#2" expanded="false" />
+                <element signature="e#13140#13266#0" expanded="true" />
+                <element signature="e#13339#15769#1" expanded="false" />
+                <element signature="e#13847#13953#0" expanded="false" />
+                <element signature="e#15564#15758#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="helper.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../lepton-backend/helper.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="253" column="29" selection-start="6790" selection-end="6790" vertical-scroll-proportion="-4.290323">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -119,7 +96,7 @@
       <file leaf-file-name="test_daemon-ogre.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/test_daemon-ogre.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="52" selection-start="774" selection-end="774" vertical-scroll-proportion="0.41463414">
+            <state line="14" column="65" selection-start="696" selection-end="696" vertical-scroll-proportion="0.3517588">
               <folding />
             </state>
           </provider>
@@ -145,8 +122,8 @@
         <option value="$PROJECT_DIR$/test/var/log/log_file_name" />
         <option value="$PROJECT_DIR$/test/var/pid/pid_file_name" />
         <option value="$PROJECT_DIR$/../../lepton-backend/helper.rb" />
-        <option value="$PROJECT_DIR$/lib/daemon-ogre.rb" />
         <option value="$PROJECT_DIR$/test/test_daemon-ogre.rb" />
+        <option value="$PROJECT_DIR$/lib/daemon-ogre.rb" />
       </list>
     </option>
   </component>
@@ -182,7 +159,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -293,15 +269,16 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="preferences.keymap" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../lepton-backend/helper.rb" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../lepton-backend" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="RubyRunConfigurationType" factoryName="Ruby">
@@ -341,7 +318,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24923077" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.24923077" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -409,6 +386,79 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lib/daemon-ogre.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="441" column="0" selection-start="13687" selection-end="13687" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#65#303#2" expanded="false" />
+            <element signature="e#81#295#2" expanded="false" />
+            <element signature="e#577#2208#0" expanded="true" />
+            <element signature="e#825#998#0" expanded="false" />
+            <element signature="e#1300#1939#0" expanded="false" />
+            <element signature="e#1441#1929#0" expanded="false" />
+            <element signature="e#1463#1917#1" expanded="false" />
+            <element signature="e#1655#1903#0" expanded="false" />
+            <element signature="e#1680#1887#1" expanded="false" />
+            <element signature="e#1965#2090#0" expanded="false" />
+            <element signature="e#2322#2522#0" expanded="false" />
+            <element signature="e#2642#2985#0" expanded="false" />
+            <element signature="e#3160#3194#0" expanded="false" />
+            <element signature="e#3325#3970#0" expanded="false" />
+            <element signature="e#4370#5321#2" expanded="false" />
+            <element signature="e#4413#4585#0" expanded="false" />
+            <element signature="e#4613#4852#0" expanded="false" />
+            <element signature="e#4875#5145#0" expanded="false" />
+            <element signature="e#4891#5133#2" expanded="false" />
+            <element signature="e#4975#5119#0" expanded="false" />
+            <element signature="e#5369#5489#2" expanded="false" />
+            <element signature="e#5542#7498#2" expanded="false" />
+            <element signature="e#5691#5935#0" expanded="false" />
+            <element signature="e#5745#5925#2" expanded="false" />
+            <element signature="e#6016#6339#0" expanded="false" />
+            <element signature="e#6124#6185#0" expanded="false" />
+            <element signature="e#6475#7169#0" expanded="false" />
+            <element signature="e#7243#7490#0" expanded="false" />
+            <element signature="e#8083#8923#0" expanded="true" />
+            <element signature="e#8931#8975#0" expanded="true" />
+            <element signature="e#8983#9195#0" expanded="true" />
+            <element signature="e#9203#9366#0" expanded="true" />
+            <element signature="e#9374#10114#0" expanded="true" />
+            <element signature="e#10174#10232#0" expanded="true" />
+            <element signature="e#10240#10439#0" expanded="true" />
+            <element signature="e#10447#10919#0" expanded="true" />
+            <element signature="e#10927#11123#0" expanded="true" />
+            <element signature="e#11131#12141#0" expanded="true" />
+            <element signature="e#11471#11935#0" expanded="false" />
+            <element signature="e#11565#11919#0" expanded="false" />
+            <element signature="e#11760#11901#0" expanded="false" />
+            <element signature="e#12149#12638#0" expanded="true" />
+            <element signature="e#12707#12863#2" expanded="false" />
+            <element signature="e#13140#13266#0" expanded="true" />
+            <element signature="e#13339#15769#1" expanded="false" />
+            <element signature="e#13847#13953#0" expanded="false" />
+            <element signature="e#15564#15758#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../lepton-backend/helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="253" column="29" selection-start="6790" selection-end="6790" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#4413#4723#0" expanded="true" />
+            <element signature="e#6721#6878#0" expanded="true" />
+            <element signature="e#6920#7091#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_daemon-ogre.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="53" selection-start="817" selection-end="817" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.rdoc">
       <provider selected="true" editor-type-id="text-editor">
         <state line="72" column="0" selection-start="2391" selection-end="2391" vertical-scroll-proportion="0.4390244" />
@@ -436,30 +486,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/var/daemon.stderr.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/var/pid/pid_file_name">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="3" selection-start="22" selection-end="22" vertical-scroll-proportion="0.11942675">
-          <folding />
+        <state line="5" column="3" selection-start="22" selection-end="22" vertical-scroll-proportion="0.11942675" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/var/log/log_file_name">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../lepton-backend/helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="198" column="34" selection-start="5316" selection-end="5318" vertical-scroll-proportion="-17.870968">
+          <folding>
+            <element signature="e#4413#4723#0" expanded="true" />
+            <element signature="e#6721#6878#0" expanded="true" />
+            <element signature="e#6920#7091#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/daemon-ogre.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="441" column="0" selection-start="13687" selection-end="13687" vertical-scroll-proportion="-3.387097">
+        <state line="265" column="77" selection-start="7872" selection-end="7872" vertical-scroll-proportion="89.6129">
           <folding>
-            <element signature="e#16#13203#0" expanded="false" />
-            <element signature="e#24#13199#2" expanded="false" />
-            <element signature="e#55#309#0" expanded="false" />
             <element signature="e#65#303#2" expanded="false" />
             <element signature="e#81#295#2" expanded="false" />
-            <element signature="e#519#5512#0" expanded="false" />
-            <element signature="e#529#5506#2" expanded="false" />
-            <element signature="e#644#817#0" expanded="false" />
+            <element signature="e#577#2208#0" expanded="true" />
             <element signature="e#825#998#0" expanded="false" />
             <element signature="e#1300#1939#0" expanded="false" />
             <element signature="e#1441#1929#0" expanded="false" />
@@ -478,75 +535,39 @@
             <element signature="e#4891#5133#2" expanded="false" />
             <element signature="e#4975#5119#0" expanded="false" />
             <element signature="e#5369#5489#2" expanded="false" />
-            <element signature="e#5532#8116#0" expanded="false" />
-            <element signature="e#5542#7498#0" expanded="false" />
-            <element signature="e#5542#7498#0" expanded="false" />
+            <element signature="e#5542#7498#2" expanded="false" />
             <element signature="e#5691#5935#0" expanded="false" />
             <element signature="e#5745#5925#2" expanded="false" />
             <element signature="e#6016#6339#0" expanded="false" />
             <element signature="e#6124#6185#0" expanded="false" />
-            <element signature="e#5691#7490#1" expanded="false" />
             <element signature="e#6475#7169#0" expanded="false" />
             <element signature="e#7243#7490#0" expanded="false" />
-            <element signature="e#5542#8110#1" expanded="false" />
-            <element signature="e#8136#13194#0" expanded="false" />
-            <element signature="e#8146#13188#2" expanded="false" />
-            <element signature="e#8185#13182#0" expanded="false" />
-            <element signature="e#9918#10622#2" expanded="false" />
-            <element signature="e#9934#10533#1" expanded="false" />
-            <element signature="e#10096#10373#0" expanded="false" />
-            <element signature="e#10119#10357#1" expanded="false" />
-            <element signature="e#9934#10533#1" expanded="false" />
-            <element signature="e#10812#10964#0" expanded="false" />
-            <element signature="e#10841#10952#1" expanded="false" />
-            <element signature="e#11019#11444#0" expanded="false" />
-            <element signature="e#11048#11432#1" expanded="false" />
-            <element signature="e#11086#11418#1" expanded="false" />
-            <element signature="e#11500#11648#0" expanded="false" />
-            <element signature="e#11529#11636#1" expanded="false" />
-            <element signature="e#11682#12666#2" expanded="false" />
-            <element signature="e#11698#12596#1" expanded="false" />
-            <element signature="e#12006#12470#0" expanded="false" />
-            <element signature="e#12100#12454#0" expanded="false" />
-            <element signature="e#12295#12436#0" expanded="false" />
-            <element signature="e#12706#13163#2" expanded="false" />
-            <element signature="e#12877#12972#0" expanded="false" />
-            <element signature="e#13219#13676#0" expanded="false" />
-            <element signature="e#13227#13404#0" expanded="false" />
-            <element signature="e#13242#13398#2" expanded="false" />
-            <element signature="e#13687#16507#0" expanded="false" />
-            <element signature="e#13695#16503#2" expanded="false" />
-            <element signature="e#13717#16183#0" expanded="false" />
-            <element signature="e#13745#16175#1" expanded="false" />
-            <element signature="e#13894#16175#0" expanded="false" />
-            <element signature="e#13909#14242#0" expanded="false" />
-            <element signature="e#14253#14359#0" expanded="false" />
-            <element signature="e#14408#15548#0" expanded="false" />
-            <element signature="e#14442#15536#1" expanded="false" />
-            <element signature="e#15579#15886#0" expanded="false" />
-            <element signature="e#15970#16164#0" expanded="false" />
-            <element signature="e#16214#16497#0" expanded="false" />
+            <element signature="e#8083#8923#0" expanded="true" />
+            <element signature="e#8931#8975#0" expanded="true" />
+            <element signature="e#8983#9195#0" expanded="true" />
+            <element signature="e#9203#9366#0" expanded="true" />
+            <element signature="e#9374#10114#0" expanded="true" />
+            <element signature="e#10174#10232#0" expanded="true" />
+            <element signature="e#10240#10439#0" expanded="true" />
+            <element signature="e#10447#10919#0" expanded="true" />
+            <element signature="e#10927#11123#0" expanded="true" />
+            <element signature="e#11131#12141#0" expanded="true" />
+            <element signature="e#11471#11935#0" expanded="false" />
+            <element signature="e#11565#11919#0" expanded="false" />
+            <element signature="e#11760#11901#0" expanded="false" />
+            <element signature="e#12149#12638#0" expanded="true" />
+            <element signature="e#12707#12863#2" expanded="false" />
+            <element signature="e#13140#13266#0" expanded="true" />
+            <element signature="e#13339#15769#1" expanded="false" />
+            <element signature="e#13847#13953#0" expanded="false" />
+            <element signature="e#15564#15758#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../lepton-backend/helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="253" column="29" selection-start="6790" selection-end="6790" vertical-scroll-proportion="-4.290323">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/var/log/log_file_name">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test_daemon-ogre.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="52" selection-start="774" selection-end="774" vertical-scroll-proportion="0.41463414">
+        <state line="14" column="65" selection-start="696" selection-end="696" vertical-scroll-proportion="0.3517588">
           <folding />
         </state>
       </provider>

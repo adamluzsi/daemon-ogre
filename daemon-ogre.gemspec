@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "daemon-ogre"
-  s.version = "1.1.4"
+  s.version = "1.1.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["adam.luzsi"]
@@ -37,7 +37,10 @@ Gem::Specification.new do |s|
     "daemon-ogre.gemspec",
     "lib/daemon-ogre.rb",
     "test/helper.rb",
-    "test/test_daemon-ogre.rb"
+    "test/test_daemon-ogre.rb",
+    "test/var/daemon.stderr.log",
+    "test/var/log/log_file_name",
+    "test/var/pid/pid_file_name"
   ]
   s.homepage = "http://github.com/adamluzsi/daemon-ogre"
   s.licenses = ["MIT"]

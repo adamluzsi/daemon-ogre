@@ -250,15 +250,6 @@ begin
       end
     end
 
-    # Spawn a deamon
-    #SimpleDaemon.start fork, (ARGV[0] || '/tmp/deamon.pid'), (ARGV[1] || '/tmp/daemon.stdout.log'), (ARGV[2] || '/tmp/daemon.stderr.log')
-    # Set up signals for our daemon, for now they just exit the process.
-    #Signal.trap("HUP")  { $stdout.puts "SIGHUP and exit" ; exit }
-    #Signal.trap("INT")  { $stdout.puts "SIGINT and exit" ; exit }
-    #Signal.trap("QUIT") { $stdout.puts "SIGQUIT and exit"; exit }
-
-    puts "#{$0} daemon watching you..."            if ARGV.include?("daemon") || ARGV.include?("-d")
-    puts "#{$0} is going to be FacePalmed..."      if ARGV.include? "stop"
   end
 
   #server_model
@@ -268,11 +259,10 @@ begin
     class << self
 
       def daemon
-
+        puts "#{$0} daemon watching you..."
         DaemonOgre.create_on_filesystem DaemonOgre::App.pid_path
         DaemonOgre.create_on_filesystem DaemonOgre::App.log_path
         DaemonOgre.create_on_filesystem './var/daemon.stderr.log'
-
         Daemon.start fork,
                      DaemonOgre::App.pid_path,
                      DaemonOgre::App.log_path,
@@ -303,6 +293,7 @@ begin
       end
 
       def stop
+        puts "#{$0} is going to be FacePalmed..."
         Daemon.kill DaemonOgre::App.pid_path
         kill_with_pid
         File.open(DaemonOgre::App.pid_path, "w").write("")
@@ -310,6 +301,7 @@ begin
       end
 
       def restart
+
         Daemon.kill DaemonOgre::App.pid_path
         kill_with_pid
         File.open(DaemonOgre::App.pid_path, "w").write("")
@@ -344,7 +336,7 @@ begin
       end
 
       def continue?
-        Process.exit if !@@startup if App.terminate
+        Process.exit if !@@startup
       end
 
       def set_log(param)
@@ -435,6 +427,9 @@ begin
   end
   def get_port(port,max_port=65535 ,host="0.0.0.0")
     DaemonOgre.get_port(port,max_port,host)
+  end
+  def logger(error_msg,prefix="",log_file=DaemonOgre::App.log_path)
+    DaemonOgre.error_logger(error_msg,prefix,log_file)
   end
 end
 
