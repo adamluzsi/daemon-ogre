@@ -1,16 +1,6 @@
-daemon-ogre
-===========
-
 #Example
 
-#gem install 'daemon-ogre'
 require 'daemon-ogre'
-
-
-DaemonOgre.start #all what you need
-
-#but for config your beloved app , than!
-#=======================================
 
 DaemonOgre.start :name      => "MySuperAppName!",          #this will be the name of the application
                  :log_path  => "./var/log/log_file_name",  #this will be the logfile place and name
@@ -19,6 +9,9 @@ DaemonOgre.start :name      => "MySuperAppName!",          #this will be the nam
                                                            # with "start" arguments like :
                                                            #                  ruby my_awsome_app.rb start
 
+#by default all you need to do is require daemon-ogre and than start it in the main file head...
+#DaemonOgre.start
+#yepp, that's all...
 
 #othere stuffs to use:
 #everybody love: require_relative...
@@ -40,36 +33,3 @@ require_directory "some_dir_name_from_here_where_are_multi_dir_levels",
 
 CONFIG = require_ymls "some_dir_name_from_here_where_are_the_yml_files_in_multi_dir_level"
 #the file names will be the hash-key and under that , there will be the yml file datas loaded in
-
-#if you need get a free port in a range or from, you can use this:
-get_port(from_nmb,to_nmb,host)
-#or by simply
-get_port(number)
-
-#and if you hate find all the bugs... you can use error_logger at your command like this:
-begin
-
-    your awsome code!
-
-rescue xyexception => ex
-    DaemonOgre.error_logger ex,            #error_msg
-                            prefix,        #this is optionable! but i usualy use: "#{__FILE__}/#{__LINE__}"
-                            log_file       #this is optionable!
-end
-
-
-
-#=========================================================-
-
-
-
-#in Short:
-#require 'daemon-ogre'
-#DaemonOgre.start
-#
-##as for helper, you can use those methods above :)
-#your_Super_app_code!
-
-
-
-daemon-ogre
