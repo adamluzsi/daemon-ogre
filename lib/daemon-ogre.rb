@@ -495,11 +495,12 @@ begin
           DaemonOgre::Server.restart      if serv_load.include? "restart"
           DaemonOgre::Server.start        if serv_load.include? "start"
           DaemonOgre::Server.stop         if serv_load.include? "stop"
+          DaemonOgre::Server.terminate
           DaemonOgre::Server.daemon       if serv_load.include? "daemon"
         end
 
         #Continue our program ? : )
-        DaemonOgre::Server.continue?
+        DaemonOgre::Server.continue? if DaemonOgre::App.terminate
 
         begin
           require "debugger" ;debugger if serv_load.include? "debugger"
