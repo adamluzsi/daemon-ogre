@@ -24,6 +24,32 @@ but we love config our beloved App!
                                                                # with "start" arguments like :
                                                                #                  ruby my_awsome_app.rb start
 
+In use?
+-------
+
+
+you can simply use your terminal with arguments like
+* start - for start the process if you choosed :terminate => true in code like above
+start command will check does the application already running or not, so you dont have to worry about
+
+* stop     - will terminate the running application
+* restart  - will stop the process if that is already running than start again
+* debug    - this will show the fancy loadings if you want look busy by coding big stuffs :) (or debug your code)
+* debugger - this will call the ruby debugger gem to aid you in trouble
+you should use these commands:
+
+    set autolist on #show the code, and the position like and editor, in every step. 
+    s #step in any kind of method, beware to use carefully because you end up in really deep somewhere in Alice world
+    n #step to next code/codeblock etc, without enter it (usefull when you find the right place)
+    l #list your current position
+    #simply hit enter to repeate the last one
+    
+* daemon or -d -this will fork a child process by the given parameters
+* log    or -l -you can set the log file position n by terminal for one time run
+* pid    or -p -you can set the pid file position n name by terminal for one time run
+* status or -s -this will tell you ,does your process is running not 
+* help         -this will invoke some help to the terminal if you out of luck and forget everything from this page
+
 
 othere stuffs to use:
 ---------------------
