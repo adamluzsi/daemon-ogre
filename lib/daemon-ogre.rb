@@ -298,7 +298,8 @@ begin
         Daemon.kill DaemonOgre::App.pid_path
         kill_with_pid
         File.open(DaemonOgre::App.pid_path, "w").write("")
-        terminate
+        Process.exit
+
       end
 
       def restart
@@ -306,8 +307,8 @@ begin
         Daemon.kill DaemonOgre::App.pid_path
         kill_with_pid
         File.open(DaemonOgre::App.pid_path, "w").write("")
-
         start
+
       end
 
       def kill_with_pid
@@ -330,10 +331,6 @@ begin
         rescue Exception => ex
           puts "Exception has occured: #{ex}"
         end
-      end
-
-      def terminate
-        Process.exit if DaemonOgre::App.terminate
       end
 
       def continue?
@@ -416,6 +413,9 @@ end
 
 #monkey patch
 begin
+  def process_running?(input)
+    DaemonOgre.process_running?(input)
+  end
   class File
     def self.create!(input,optionable_data=nil,optionable_file_mod="w")
       DaemonOgre.create_on_filesystem(input,optionable_data,optionable_file_mod)
@@ -455,15 +455,11 @@ begin
       end
 
       def number(length)
-
         Random.rand(length)
-
       end
 
       def boolean
-
         rand(2) == 1
-
       end
 
       def date from = Time.at(1114924812), to = Time.now
@@ -472,13 +468,11 @@ begin
     end
   end
   class Array
-    #class << self
-      def index_of(target_element)
-        array = self
-        hash = Hash[array.map.with_index.to_a]
-        return hash[target_element]
-      end
-    #end
+    def index_of(target_element)
+      array = self
+      hash = Hash[array.map.with_index.to_a]
+      return hash[target_element]
+    end
   end
 end
 

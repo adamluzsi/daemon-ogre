@@ -82,6 +82,9 @@ or       Rnd.string(15,2) #for rnd bla bla names
 You need get the index of an Array element? you can use:
 array_variable.index_of("something)
 
+Do you wanted to know , does that process running on that pid or not?
+    process_running?(nmbr)
+
 
 
 -=========================================================-
