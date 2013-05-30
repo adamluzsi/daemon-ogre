@@ -286,6 +286,7 @@ begin
          "\nport\t\tor -tcp\t\t=> user definiated port"+\
          "\nstatus\t\t\t\t=> last process alive?"+\
          "\nhelp\t\t\t\tgive you this msg :)\n"
+        DaemonOgre::App.terminate=true
       end
 
       def start
@@ -403,6 +404,7 @@ begin
           "\nif you specificated one manualy pls type"+\
           " the path first in with '-p xy/xzt.pid'"
         end
+        DaemonOgre::App.terminate=true
       end
 
     end
@@ -430,6 +432,53 @@ begin
   end
   def logger(error_msg,prefix="",log_file=DaemonOgre::App.log_path)
     DaemonOgre.error_logger(error_msg,prefix,log_file)
+  end
+  class Class
+    def class_methods
+      self.methods - Object.methods
+    end
+    def self.class_methods
+      self.methods - Object.methods
+    end
+  end
+  class Rnd
+    class << self
+      def string(length,amount=1)
+        mrg = String.new
+        amount.times do
+          a_string = Random.rand(length)
+          a_string == 0 ? a_string += 1 : a_string
+          mrg_prt  = (0...a_string).map{ ('a'..'z').to_a[rand(26)] }.join
+          mrg+= " #{mrg_prt}"
+        end
+        return mrg
+      end
+
+      def number(length)
+
+        Random.rand(length)
+
+      end
+
+      def boolean
+
+        rand(2) == 1
+
+      end
+
+      def date from = Time.at(1114924812), to = Time.now
+        rand(from..to)
+      end
+    end
+  end
+  class Array
+    #class << self
+      def index_of(target_element)
+        array = self
+        hash = Hash[array.map.with_index.to_a]
+        return hash[target_element]
+      end
+    #end
   end
 end
 
@@ -495,7 +544,6 @@ begin
           DaemonOgre::Server.restart      if serv_load.include? "restart"
           DaemonOgre::Server.start        if serv_load.include? "start"
           DaemonOgre::Server.stop         if serv_load.include? "stop"
-          DaemonOgre::Server.terminate
           DaemonOgre::Server.daemon       if serv_load.include? "daemon"
         end
 
