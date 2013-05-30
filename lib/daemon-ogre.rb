@@ -290,7 +290,20 @@ begin
       end
 
       def start
-        @@startup = true
+        if File.exist?(File.expand_path(App.pid_path))
+          text = File.open(File.expand_path(App.pid_path)).read
+          terminate_on_command = Array.new
+          text.each_line do |line|
+            terminate_on_command.push DaemonOgre.process_running?(line)
+          end
+        end
+
+        if !terminate_on_command.include?(true)
+          @@startup = true
+        else
+          puts "sorry but process is already running in this specification"
+          Process.exit
+        end
       end
 
       def stop
@@ -298,7 +311,7 @@ begin
         Daemon.kill DaemonOgre::App.pid_path
         kill_with_pid
         File.open(DaemonOgre::App.pid_path, "w").write("")
-        Process.exit
+        DaemonOgre::App.terminate=true
 
       end
 
