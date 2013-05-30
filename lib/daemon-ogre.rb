@@ -298,11 +298,15 @@ begin
           end
         end
 
-        if !terminate_on_command.include?(true)
-          @@startup = true
+        if !terminate_on_command.nil?
+          if !terminate_on_command.include?(true)
+            @@startup = true
+          else
+            puts "sorry but process is already running in this specification"
+            Process.exit
+          end
         else
-          puts "sorry but process is already running in this specification"
-          Process.exit
+          @@startup = true
         end
       end
 
@@ -429,11 +433,6 @@ begin
   def process_running?(input)
     DaemonOgre.process_running?(input)
   end
-  class File
-    def self.create!(input,optionable_data=nil,optionable_file_mod="w")
-      DaemonOgre.create_on_filesystem(input,optionable_data,optionable_file_mod)
-    end
-  end
   def require_directory(directory,*args)
     DaemonOgre.load_directory(directory,*args)
   end
@@ -445,6 +444,11 @@ begin
   end
   def logger(error_msg,prefix="",log_file=DaemonOgre::App.log_path)
     DaemonOgre.error_logger(error_msg,prefix,log_file)
+  end
+  class File
+    def self.create!(input,optionable_data=nil,optionable_file_mod="w")
+      DaemonOgre.create_on_filesystem(input,optionable_data,optionable_file_mod)
+    end
   end
   class Class
     def class_methods
