@@ -69,33 +69,59 @@ and if you hate find all the bugs... you can use error_logger at your command li
         your awsome code!
 
     rescue xyexception => ex
-        logger ex,            #error_msg
-               prefix,        #this is optionable! but i usualy use: "#{__FILE__}/#{__LINE__}"
-               log_file       #this is optionable!
+        exlogger ex,            #error_msg
+                 prefix,        #this is optionable! but i usualy use: "#{__FILE__}/#{__LINE__}"
+                 log_file       #this is optionable!
     end
+    
+    #or with less fuss
+    
+    
+    begin
+    
+    rescue Exception => ex
+        ex.logger
+    end
+    
+    
+    
 
 
 if you need methods from any kind of class without the object methods, you should try this!
+
+
     Xyclassname.class_methods
 
 
 you want make some test script with rnd numbers, strings, dates, bools etc? use the Rnd class at your command
-Rnd
--string
--number
--boolean
--date
+
+
+    Rnd
+    -string
+    -number
+    -boolean
+    -date
+
 
 examples:
+
+
     Rnd.number(100)
     Rnd.string(15,2) #for rnd bla bla names
+    
 
 
 You need get the index of an Array element? you can use:
+
+
+
     array_variable.index_of("something)
 
 
 Do you wanted to know , does that process running on that pid or not?
+
+
+
     process_running?(nmbr)
 
 
@@ -103,14 +129,16 @@ Do you wanted to know , does that process running on that pid or not?
 
 in Short:
 ---------
+
     require 'daemon-ogre'
-    DaemonOgre.start #arguments if you want :)
+    DaemonOgre.start
     your_Super_app_code!
 
 
 
 
-== Contributing to daemon-ogre
+Contributing to daemon-ogre
+---------------------------
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
@@ -120,11 +148,12 @@ in Short:
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+Copyright
+---------
 
+Right to copy and use at your service fellow coder
 Copyright (c) 2013 adam.luzsi. See LICENSE.txt for
 further details.
-
 
 
 daemon-ogre
