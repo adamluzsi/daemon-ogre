@@ -49,7 +49,7 @@ you should use these commands:
 * pid    or -p -you can set the pid file position n name by terminal for one time run
 * status or -s -this will tell you ,does your process is running not 
 * help         -this will invoke some help to the terminal if you out of luck and forget everything from this page
-
+* clear        -this will remove every log by the prev given paths, usefull in debugging
 
 othere stuffs to use:
 ---------------------
@@ -159,6 +159,7 @@ in Short:
     require 'daemon-ogre'
     DaemonOgre.start
     your_Super_app_code!
+
 
 
 

@@ -3,8 +3,8 @@ require_relative "../lib/daemon-ogre.rb"
 DaemonOgre.start :name      => "api_one",          #this will be the name of the application
                  :log_path  => "./var/log/log_file_name",  #this will be the logfile place and name
                  :pid_path  => "./var/pid/pid_file_name",  #this will be the pidfile place and name
-                 :terminate => false                        #this command not let start your code if it's not started
-                                                           # with "start" arguments like :
+                 :terminate => true,                      #this command not let start your code if it's not started
+                 :clear     => true                        # with "start" arguments like :
                                                            #                  ruby my_awsome_app.rb start
 
 
@@ -18,5 +18,3 @@ until i > 1200
   puts "hello, there! A wonderful day for the #{i}. time! isn't it?"
   i+=1
 end
-
-puts "-=end=-"
