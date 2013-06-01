@@ -5,9 +5,10 @@ Description
 -----------
 
 This gem is made for one purpose. 
+
 Ruby meant to be for easy use, not hardcore coding! 
-And in terms for this, ogre will aid you in the brute way, 
-    so you can relax... 
+And in terms for this, ogre will aid you in the brute way, so you can relax... 
+
 Are you need load a whole bunch of folders to your rack application ? 
 Do it! You want one nice hash for config constant 
 from ymls all over your dirs? sure you can! you want have 
