@@ -449,10 +449,6 @@ begin
           def clear
 
             begin
-             File.delete DaemonOgre::App.pid_path
-            rescue Exception
-            end
-            begin
              File.delete DaemonOgre::App.log_path
             rescue Exception
             end
