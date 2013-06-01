@@ -38,11 +38,13 @@ start command will check does the application already running or not, so you don
 * debugger - this will call the ruby debugger gem to aid you in trouble
 you should use these commands:
 
-set autolist on   #show the code, and the position like and editor, in every step. 
-s                 #step in any kind of method, beware to use carefully because you end up in really deep somewhere in Alice world
-n                 #step to next code/codeblock etc, without enter it (usefull when you find the right place)
-l                 #list your current position
-                  #simply hit enter to repeate the last one
+
+    set autolist on   #show the code, and the position like and editor, in every step. 
+    s                 #step in any kind of method, beware to use carefully because you end up in really deep somewhere in Alice world
+    n                 #step to next code/codeblock etc, without enter it (usefull when you find the right place)
+    l                 #list your current position
+                      #simply hit enter to repeate the last one
+    
     
 * daemon or -d -this will fork a child process by the given parameters
 * log    or -l -you can set the log file position n by terminal for one time run
@@ -50,6 +52,19 @@ l                 #list your current position
 * status or -s -this will tell you ,does your process is running not 
 * help         -this will invoke some help to the terminal if you out of luck and forget everything from this page
 * clear        -this will remove every log by the prev given paths, usefull in debugging
+
+example:
+
+    ruby my_awsome_app.rb start debugger
+    ruby my_awsome_app.rb start clear
+    ruby my_awsome_app.rb status
+    ruby my_awsome_app.rb stop
+    ruby my_awsome_app.rb debug
+   
+   
+or if you dont use terminate command , than you can start simply as how you do normaly
+
+
 
 othere stuffs to use:
 ---------------------

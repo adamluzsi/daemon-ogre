@@ -494,7 +494,7 @@ begin
     def logger
       DaemonOgre.create_on_filesystem DaemonOgre::App.exceptions,
                                       'a+'
-      DaemonOgre.error_logger(self.backtrace,self,path)
+      DaemonOgre.error_logger(self.backtrace,self,DaemonOgre::App.exceptions)
     end
   end
   class File
