@@ -1,6 +1,28 @@
 daemon-ogre
 ===========
 
+Description
+-----------
+
+This gem is made for one purpose. 
+Ruby meant to be for easy use, not hardcore coding! 
+And in terms for this, ogre will aid you in the brute way, 
+    so you can relax... 
+Are you need load a whole bunch of folders to your rack application ? 
+Do it! You want one nice hash for config constant 
+from ymls all over your dirs? sure you can! you want have 
+start/stop/status/restart/daemon/etc argument commands from 
+terminal to control your application without any fuss? 
+There you go! Are you need an easy way, 
+to do the classic way of daemonise your awsome app? 
+There will be no problem at all, let the Ogre do the job!
+
+so all you need is enjoy your code! 
+Follow me on Github and send request, 
+if you have idea what can be usefull in creating your app :) 
+
+
+
 Installation
 ------------
 
