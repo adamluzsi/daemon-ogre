@@ -118,7 +118,20 @@ and ofc what else what we love if not our beloved yml-s
 we should use a nice Config constant for this(or at least i love to do)
 
     CONFIG = require_ymls "some_dir_name_from_here_where_are_the_yml_files_in_multi_dir_level"
+
 the file names will be the hash-key and under that , there will be the yml file datas loaded in
+
+And if we are at hashs, than when you need remove an element perm, or not perm you can use
+* remove  will return the hash w/o the the key
+* remove! will delete the key, than return the hash
+example:
+
+    CONFIG.remove  key
+    CONFIG.remove! key
+
+
+
+
 
 if you need get a free port in a range or from, you can use this:
     get_port(from_nmb,to_nmb,host)
