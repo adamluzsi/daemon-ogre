@@ -19,13 +19,14 @@ begin
           "Array! Example:\n:exclude => ['abc']" if arg[:exclude].class == Array
           end
 
+          arg[:type]= "rb" if !arg[:type].nil?
 
           #=================================================================================================================
 
           puts "LOADING_FILES_FROM_"+directory.to_s.split('/').last.split('.').first.capitalize if App.debug
 
           delayed_loads = Array.new
-          Dir["#{directory}/**/*.rb"].each do |file|
+          Dir["#{directory}/**/*.#{arg[:type]}"].each do |file|
 
             arg[:delayed]= [nil] if arg[:delayed].nil?
             arg[:exclude]= [nil] if arg[:exclude].nil?

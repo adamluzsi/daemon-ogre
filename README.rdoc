@@ -104,8 +104,11 @@ or
 
     require_directory "some_dir_name_from_here_where_are_multi_dir_levels",
                       :delayed => ["files","to","be","delayed","in","load"],
-                      :exclude => ["files","to","be","exclude","in","load"]
+                      :exclude => ["files","to","be","exclude","in","load"],
+                      :type => "rb"
 
+remember, you can use any of those modifier hash-tag by it self only! :)
+by default the type will be .rb files
 
 
 Helpers
@@ -147,6 +150,15 @@ and if you hate find all the bugs... you can use error_logger at your command li
         ex.logger
     end
     
+
+or the better way to do Exception handle is to rescue only those exceptions what we are know will be raised! so the app broke if something unexpected stupp come up! (development:)
+
+
+    begin
+      raise ArgumentError, "failed"
+    rescue ArgumentError => ex
+      ex.logger
+    end
     
     
 
