@@ -528,15 +528,12 @@ begin
         end
         return mrg
       end
-
-      def number(length)
+      def integer(length)
         Random.rand(length)
       end
-
       def boolean
         rand(2) == 1
       end
-
       def date from = Time.at(1114924812), to = Time.now
         rand(from..to)
       end
