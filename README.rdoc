@@ -187,7 +187,7 @@ you want make some test script with rnd numbers, strings, dates, bools etc? use 
 
     Rnd
     -string
-    -number
+    -integer
     -boolean
     -date
 
