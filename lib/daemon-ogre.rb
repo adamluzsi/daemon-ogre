@@ -297,6 +297,7 @@ begin
 
           def debug
             App.debug=true
+            $DEBUG = true
           end
 
           def help
@@ -517,11 +518,13 @@ begin
     class << self
       def string(length,amount=1)
         mrg = String.new
+        first_string = true
         amount.times do
           a_string = Random.rand(length)
           a_string == 0 ? a_string += 1 : a_string
           mrg_prt  = (0...a_string).map{ ('a'..'z').to_a[rand(26)] }.join
-          mrg+= " #{mrg_prt}"
+          first_string ? mrg += mrg_prt : mrg+= " #{mrg_prt}"
+          first_string = false
         end
         return mrg
       end
@@ -639,7 +642,6 @@ begin
 
       end
     end
-    #===================-
     def self.help
       puts "\n##defaults:\narg[:log_path]\tlog path and"+\
       " file name\narg[:pid_path]\tpid path and file n"+\
