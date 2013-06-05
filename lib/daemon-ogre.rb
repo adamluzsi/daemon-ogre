@@ -11,19 +11,19 @@ begin
 
           if !arg[:delayed].nil?
             raise ArgumentError, "Delayed items must be in an "+\
-          "Array! Example:\n:delayed => ['abc']" if arg[:delayed].class == Array
+            "Array! Example:\n:delayed => ['abc']" if arg[:delayed].class != Array
           end
 
           if !arg[:exclude].nil?
             raise ArgumentError, "Exclude items must be in an "+\
-          "Array! Example:\n:exclude => ['abc']" if arg[:exclude].class == Array
+            "Array! Example:\n:exclude => ['abc']" if arg[:exclude].class != Array
           end
 
           arg[:type]= "rb" if !arg[:type].nil?
 
           #=================================================================================================================
 
-          puts "LOADING_FILES_FROM_"+directory.to_s.split('/').last.split('.').first.capitalize if App.debug
+          puts "LOADING_FILES_FROM_"+directory.to_s.split('/').last.split('.').first.capitalize if $DEBUG
 
           delayed_loads = Array.new
           Dir["#{directory}/**/*.#{arg[:type]}"].each do |file|
@@ -48,9 +48,9 @@ begin
           end
           delayed_loads.each do |delayed_load_element|
             load(delayed_load_element)
-            puts delayed_load_element.to_s    if App.debug
+            puts delayed_load_element.to_s    if $DEBUG
           end
-          puts "DONE_LOAD_FILES_FROM_"+directory.to_s.split('/').last.split('.').first.capitalize   if App.debug
+          puts "DONE_LOAD_FILES_FROM_"+directory.to_s.split('/').last.split('.').first.capitalize   if $DEBUG
 
         end
 
@@ -90,8 +90,8 @@ begin
           require 'yaml'
           #require "hashie"
 
-          yaml_files = Dir["#{directory}/**/*.yml"].each { |f| puts f.to_s  if App.debug  }
-          puts "\nyaml file found: "+yaml_files.inspect.to_s    if App.debug
+          yaml_files = Dir["#{directory}/**/*.yml"].each { |f| puts f.to_s  if $DEBUG  }
+          puts "\nyaml file found: "+yaml_files.inspect.to_s    if $DEBUG
           @result_hash = {}
           yaml_files.each_with_index do |full_path_file_name|
 
@@ -104,16 +104,16 @@ begin
             #@result_hash = @result_hash.merge!(tmp_hash)
 
 
-            puts "=========================================================="      if App.debug
-            puts "Loading "+file_name.to_s.capitalize+"\n"                         if App.debug
-            puts YAML.load(File.read("#{full_path_file_name}"))                    if App.debug
-            puts "__________________________________________________________"      if App.debug
+            puts "=========================================================="      if $DEBUG
+            puts "Loading "+file_name.to_s.capitalize+"\n"                         if $DEBUG
+            puts YAML.load(File.read("#{full_path_file_name}"))                    if $DEBUG
+            puts "__________________________________________________________"      if $DEBUG
 
           end
 
-          puts "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"         if App.debug
-          puts "The Main Hash: \n"+@result_hash.inspect.to_s                       if App.debug
-          puts "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n"       if App.debug
+          puts "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"         if $DEBUG
+          puts "The Main Hash: \n"+@result_hash.inspect.to_s                       if $DEBUG
+          puts "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n"       if $DEBUG
 
           return @result_hash
         end
@@ -190,8 +190,7 @@ begin
                         :exceptions,
                         :app_name,
                         :port,
-                        :terminate,
-                        :debug
+                        :terminate
         end
       end
     end
@@ -203,7 +202,6 @@ begin
       App.terminate  = false
       App.port       = 80
       App.app_name   = $0
-      App.debug      = false
 
       begin
         ['daemon_stderr','exceptions'].each do |one_log|
@@ -248,16 +246,16 @@ begin
           Process.kill 'HUP', opid.to_i
           true
         rescue Errno::ENOENT
-          $stdout.puts "#{pidfile} did not exist: Errno::ENOENT"                        if App.debug
+          $stdout.puts "#{pidfile} did not exist: Errno::ENOENT"                        if $DEBUG
           true
         rescue Errno::ESRCH
-          $stdout.puts "The process #{opid} did not exist: Errno::ESRCH"                if App.debug
+          $stdout.puts "The process #{opid} did not exist: Errno::ESRCH"                if $DEBUG
           true
         rescue Errno::EPERM
-          $stderr.puts "Lack of privileges to manage the process #{opid}: Errno::EPERM" if App.debug
+          $stderr.puts "Lack of privileges to manage the process #{opid}: Errno::EPERM" if $DEBUG
           false
         rescue ::Exception => e
-          $stderr.puts "While signaling the PID, unexpected #{e.class}: #{e}"           if App.debug
+          $stderr.puts "While signaling the PID, unexpected #{e.class}: #{e}"           if $DEBUG
           false
         end
 
@@ -296,7 +294,6 @@ begin
           end
 
           def debug
-            App.debug=true
             $DEBUG = true
           end
 
@@ -358,13 +355,13 @@ begin
           def kill_with_pid
             begin
               if File.exists?(DaemonOgre::App.pid_path)
-                puts "PidFile found, processing..."  if App.debug
+                puts "PidFile found, processing..."  if $DEBUG
                 File.open(DaemonOgre::App.pid_path).each_line do |row|
                   begin
                     Process.kill 'TERM', row.to_i
-                    puts "terminated process at: #{row}" if App.debug
+                    puts "terminated process at: #{row}" if $DEBUG
                   rescue Exception => ex
-                    puts "At process: #{row}, #{ex}"     if App.debug
+                    puts "At process: #{row}, #{ex}"     if $DEBUG
                   end
                 end
               else

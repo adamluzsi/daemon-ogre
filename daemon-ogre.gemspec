@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "daemon-ogre"
-  s.version = "1.2.5"
+  s.version = "1.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Adam.Luzsi"]
-  s.date = "2013-05-30"
+  s.date = "2013-06-04"
   s.description = "This gem is made for one purpose. Ruby meant to be for easy use, not hardcore coding! And in terms for this, ogre will aid you in the brute way, so you can relax... Are you need load a whole bunch of folders to your rack application ? do it! You want one nice hash for config constant from ymls all over your dirs? sure you can! you want have start/stop/status/restart/daemon/etc argument commands from terminal to control your application without any fuss? There you go! Are you need an easy way to do the classic way of daemonise your awsome app? there will be no problem at all, let the Ogre do the job :) so all you need is enjoy your code! Follow me on Github and send request if you have idea what can be usefull in creating your app :)   https://github.com/adamluzsi/daemon-ogre.git"
   s.email = "adamluzsi@gmail.com"
   s.extra_rdoc_files = [
@@ -37,10 +37,7 @@ Gem::Specification.new do |s|
     "daemon-ogre.gemspec",
     "lib/daemon-ogre.rb",
     "test/helper.rb",
-    "test/test_daemon-ogre.rb",
-    "test/var/daemon.stderr.log",
-    "test/var/log/log_file_name",
-    "test/var/pid/pid_file_name"
+    "test/test_daemon-ogre.rb"
   ]
   s.homepage = "http://github.com/adamluzsi/daemon-ogre"
   s.licenses = ["MIT"]
