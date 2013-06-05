@@ -8,6 +8,10 @@ begin
         #Based on the rb location
         def load_directory(directory,*args)
           arg = Hash[*args]
+          directory = File.expand_path(directory)
+          10.times do
+          puts directory.to_s
+          end
 
           if !arg[:delayed].nil?
             raise ArgumentError, "Delayed items must be in an "+\
@@ -19,7 +23,7 @@ begin
             "Array! Example:\n:exclude => ['abc']" if arg[:exclude].class != Array
           end
 
-          arg[:type]= "rb" if !arg[:type].nil?
+          arg[:type]= "rb" if arg[:type].nil?
 
           #=================================================================================================================
 
@@ -33,14 +37,14 @@ begin
 
             arg[:exclude].each do |except|
               if file.split('/').last.split('.').first == except.to_s.split('.').first
-                puts file.to_s + " cant be loaded because it's an exception"
+                puts file.to_s + " cant be loaded because it's an exception" if $DEBUG
               else
                 arg[:delayed].each do |delay|
                   if file.split('/').last.split('.').first == delay.to_s.split('.').first
                     delayed_loads.push(file)
                   else
                     load(file)
-                    puts file.to_s
+                    puts file.to_s if $DEBUG
                   end
                 end
               end
