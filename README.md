@@ -29,11 +29,11 @@ Installation
 
 ### [RubyGems](http://rubygems.org/)
 
-$ gem install 'daemon-ogre'
+    $ gem install 'daemon-ogre'
 
 
-require 'daemon-ogre'
-DaemonOgre.start
+    require 'daemon-ogre'
+    DaemonOgre.start
 
 
 but we love config our beloved App!
@@ -47,6 +47,7 @@ but we love config our beloved App!
                                                                # with "start" arguments like :
                                                                #                  ruby my_awsome_app.rb start
 
+
 In use?
 -------
 
@@ -55,10 +56,10 @@ you can simply use your terminal with arguments like
 * start - for start the process if you choosed :terminate => true in code like above
 start command will check does the application already running or not, so you dont have to worry about
 
-* stop     - will terminate the running application
-* restart  - will stop the process if that is already running than start again
-* debug    - this will show the fancy loadings if you want look busy by coding big stuffs :) (or debug your code)
-* debugger - this will call the ruby debugger gem to aid you in trouble
+* stop        - will terminate the running application
+* restart     - will stop the process if that is already running than start again
+* debug or -d - this will show the fancy loadings if you want look busy by coding big stuffs :) (or debug your code)
+* debugger    - this will call the ruby debugger gem to aid you in trouble
 you should use these commands:
 
 
@@ -69,7 +70,7 @@ you should use these commands:
                       #simply hit enter to repeate the last one
     
     
-* daemon or -d -this will fork a child process by the given parameters
+* daemon       -this will fork a child process by the given parameters
 * log    or -l -you can set the log file position n by terminal for one time run
 * pid    or -p -you can set the pid file position n name by terminal for one time run
 * status or -s -this will tell you ,does your process is running not 
@@ -134,6 +135,7 @@ example:
 
 
 if you need get a free port in a range or from, you can use this:
+
     get_port(from_nmb,to_nmb,host)
 
 or by simply
@@ -141,20 +143,16 @@ or by simply
     get_port(number)
 
 
-and if you hate find all the bugs... you can use error_logger at your command like this:
+and if you hate find all the bugs... you can use error_logger at your command like this if you running your process on
+background and cannot puts on the terminal:
 
 
-    begin
+    exlogger msg, #anything after this is optionable
+             :path   => "./per_relative-absoluth_path",
+             :prefix => "it's something..."
 
-        your awsome code!
-
-    rescue xyexception => ex
-        exlogger ex,            #error_msg
-                 prefix,        #this is optionable! but i usualy use: "#{__FILE__}/#{__LINE__}"
-                 log_file       #this is optionable!
-    end
     
-    #or with less fuss
+or with less fuss at the exception handle:
     
     
     begin

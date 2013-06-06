@@ -9,9 +9,6 @@ begin
         def load_directory(directory,*args)
           arg = Hash[*args]
           directory = File.expand_path(directory)
-          10.times do
-          puts directory.to_s
-          end
 
           if !arg[:delayed].nil?
             raise ArgumentError, "Delayed items must be in an "+\
@@ -192,6 +189,7 @@ begin
                         :pid_path,
                         :daemon_stderr,
                         :exceptions,
+                        :exlogger,
                         :app_name,
                         :port,
                         :terminate
@@ -208,7 +206,7 @@ begin
       App.app_name   = $0
 
       begin
-        ['daemon_stderr','exceptions'].each do |one_log|
+        ['daemon_stderr','exceptions','exlogger'].each do |one_log|
 
           App.__send__(one_log+"=",clone_mpath(App.log_path,one_log+".log"))
 
@@ -306,13 +304,14 @@ begin
             "\nstart	daemon -d	stop	restart	log	-l	pid	-p	port	-tcp	status	reset	help"+\
             "\n==============================================================================DESC======>>"
             puts "start\t\t\t\t=> this will start the #{$0}"+\
-             "\ndaemon\t\tor -d\t\t=> this will make is daemon process"+\
+             "\ndaemon\t\t\t\t=> this will make is daemon process"+\
              "\nstop\t\t\t\t=> this will kill the last process with pidfile"+\
              "\nrestart\t\tor reset\t=> hard restart"+\
              "\nlog\t\tor -l\t\t=> logfile place"+\
              "\npid\t\tor -p\t\t=> pid file place (if you want set the filename as well, put .pid or .txt in the end)"+\
              "\nport\t\tor -tcp\t\t=> user definiated port"+\
              "\nstatus\t\t\t\t=> last process alive?"+\
+             "\ndebug\t\tor -d\t\t=> show debug log (you can make your own by using 'puts 'xy' if $DEBUG' "+\
              "\nhelp\t\t\t\tgive you this msg :)\n"
             DaemonOgre::App.terminate=true
           end
@@ -451,18 +450,14 @@ begin
 
           def clear
 
-            begin
-             File.delete DaemonOgre::App.log_path
-            rescue Exception
-            end
-            begin
-             File.delete DaemonOgre::App.daemon_stderr
-            rescue Exception
-            end
+            logs = ['loh_path','daemon_stderr','exceptions','exlogger']
 
-            begin
-            File.delete DaemonOgre::App.exceptions
-            rescue Exception
+            logs.each do |logname|
+              begin
+               File.delete DaemonOgre::App.__send__(logname)
+              rescue Exception => ex
+                puts ex if $DEBUG
+              end
             end
 
           end
@@ -488,10 +483,13 @@ begin
   def get_port(port,max_port=65535 ,host="0.0.0.0")
     DaemonOgre.get_port(port,max_port,host)
   end
-  def exlogger(error_msg,prefix="",log_file=DaemonOgre::App.log_path)
-    DaemonOgre.create_on_filesystem log_file,
+  def exlogger(error_msg,*args)
+    arg=Hash[*args]
+    arg[:prefix] = String.new                if arg[:prefix].nil?
+    arg[:path]   = DaemonOgre::App.exlogger  if arg[:path].nil?
+    DaemonOgre.create_on_filesystem arg[:path],
                          'a+'
-    DaemonOgre.error_logger(error_msg,prefix,log_file)
+    DaemonOgre.error_logger(error_msg,arg[:prefix],arg[:path])
   end
   class Exception
     def logger
@@ -600,7 +598,7 @@ begin
           case one_argv_parameter.downcase
             when "start"    then serv_load.push  "start"
             when "daemon"   then serv_load.push  "daemon"
-            when "-d"       then serv_load.push  "daemon"
+            when "-d"       then DaemonOgre::Server.debug
             when "stop"     then serv_load.push  "stop"
             when "restart"  then serv_load.push  "restart"
             when "reset"    then serv_load.push  "restart"
@@ -635,7 +633,7 @@ begin
         begin
           require "debugger" ;debugger if serv_load.include? "debugger"
         rescue Exception => ex
-          puts "you need to install debugger gem => gem install debugger"
+          puts "you need to install debugger gem => gem install debugger\n#{ex}"
         end
 
       end
