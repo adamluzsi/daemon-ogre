@@ -104,9 +104,9 @@ Example:
 or
 
     require_directory "some_dir_name_from_here_where_are_multi_dir_levels",
-                      :delayed => ["files","to","be","delayed","in","load"],
-                      :exclude => ["files","to","be","exclude","in","load"],
-                      :type => "rb"
+                      :delayed  => ["files","to","be","delayed","in","load"],
+                      :excluded => ["files","to","be","excluded","in","load"],
+                      :type     => "rb"
 
 remember, you can use any of those modifier hash-tag by it self only! :)
 by default the type will be .rb files

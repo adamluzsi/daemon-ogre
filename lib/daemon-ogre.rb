@@ -15,9 +15,9 @@ begin
             "Array! Example:\n:delayed => ['abc']" if arg[:delayed].class != Array
           end
 
-          if !arg[:exclude].nil?
+          if !arg[:excluded].nil?
             raise ArgumentError, "Exclude items must be in an "+\
-            "Array! Example:\n:exclude => ['abc']" if arg[:exclude].class != Array
+            "Array! Example:\n:exclude => ['abc']" if arg[:excluded].class != Array
           end
 
           arg[:type]= "rb" if arg[:type].nil?
@@ -30,9 +30,9 @@ begin
           Dir["#{directory}/**/*.#{arg[:type]}"].each do |file|
 
             arg[:delayed]= [nil] if arg[:delayed].nil?
-            arg[:exclude]= [nil] if arg[:exclude].nil?
+            arg[:excluded]= [nil] if arg[:excluded].nil?
 
-            arg[:exclude].each do |except|
+            arg[:excluded].each do |except|
               if file.split('/').last.split('.').first == except.to_s.split('.').first
                 puts file.to_s + " cant be loaded because it's an exception" if $DEBUG
               else
@@ -75,11 +75,11 @@ begin
 
           if File.exists?(File.expand_path(log_file))
             error_log = File.open( File.expand_path(log_file), "a+")
-            error_log << "\n#{Time.now} | #{prefix}#{":" if prefix != ""} #{error_msg}"
+            error_log << "\n#{Time.now} | #{prefix}#{":" if prefix != ""} #{error_msg.inspect.gsub(", ",",\n")}"
             error_log.close
           else
             File.new(File.expand_path(log_file), "w").write(
-                "#{Time.now} | #{prefix}#{":" if prefix != ""} #{error_msg}"
+                "#{Time.now} | #{prefix}#{":" if prefix != ""} #{error_msg.inspect.gsub(", ",",\n")}"
             )
           end
 
