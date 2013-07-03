@@ -73,13 +73,20 @@ begin
 
         def error_logger(error_msg,prefix="",log_file=App.log_path)
 
+          ###convert error msg to more humanfriendly one
+          begin
+            error_msg= error_msg.to_s.gsub('", "','",'+"\n\"")
+          rescue Exception
+            error_msg= error_msg.inspect.gsub('", "','",'+"\n\"")
+          end
+
           if File.exists?(File.expand_path(log_file))
             error_log = File.open( File.expand_path(log_file), "a+")
-            error_log << "\n#{Time.now} | #{prefix}#{":" if prefix != ""} #{error_msg.inspect.gsub(", ",",\n")}"
+            error_log << "\n#{Time.now} | #{prefix}#{":" if prefix != ""} #{error_msg}"
             error_log.close
           else
             File.new(File.expand_path(log_file), "w").write(
-                "#{Time.now} | #{prefix}#{":" if prefix != ""} #{error_msg.inspect.gsub(", ",",\n")}"
+                "#{Time.now} | #{prefix}#{":" if prefix != ""} #{error_msg}"
             )
           end
 
