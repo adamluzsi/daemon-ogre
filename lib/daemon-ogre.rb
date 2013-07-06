@@ -8,7 +8,8 @@ begin
         #Based on the rb location
         def load_directory(directory,*args)
           arg = Hash[*args]
-          directory = File.expand_path(directory)
+
+          #directory = File.expand_path(directory)
 
           if !arg[:delayed].nil?
             raise ArgumentError, "Delayed items must be in an "+\
@@ -22,22 +23,38 @@ begin
 
           arg[:type]= "rb" if arg[:type].nil?
 
-          #=================================================================================================================
+          #=============================================================================================================
 
-          puts "LOADING_FILES_FROM_"+directory.to_s.split('/').last.split('.').first.capitalize if $DEBUG
+          ### GET Pre path + validation
+          begin
+          #get method callers path
+          pre_path = caller[1].split('.rb:').first+('.rb')
+          separator_symbol= String.new
+          pre_path.include?('/') ? separator_symbol = '/' : separator_symbol = '\\'
+          pre_path= ((pre_path.split(separator_symbol))-([pre_path.split(separator_symbol).pop])).join(separator_symbol)
+          puts pre_path
+          end
+
+          puts "LOADING_FILES_FROM_"+directory.to_s.split(separator_symbol).last.split('.').first.capitalize if $DEBUG
 
           delayed_loads = Array.new
-          Dir["#{directory}/**/*.#{arg[:type]}"].each do |file|
+
+
+          puts File.join("#{pre_path}","#{directory}","**","*.#{arg[:type]}")
+          puts Dir[File.join("#{pre_path}","#{directory}","**","*.#{arg[:type]}")].inspect
+
+          Dir[File.join("#{pre_path}","#{directory}","**","*.#{arg[:type]}")].each do |file|
+
 
             arg[:delayed]= [nil] if arg[:delayed].nil?
             arg[:excluded]= [nil] if arg[:excluded].nil?
 
             arg[:excluded].each do |except|
-              if file.split('/').last.split('.').first == except.to_s.split('.').first
+              if file.split(separator_symbol).last.split('.').first == except.to_s.split('.').first
                 puts file.to_s + " cant be loaded because it's an exception" if $DEBUG
               else
                 arg[:delayed].each do |delay|
-                  if file.split('/').last.split('.').first == delay.to_s.split('.').first
+                  if file.split(separator_symbol).last.split('.').first == delay.to_s.split('.').first
                     delayed_loads.push(file)
                   else
                     load(file)
@@ -51,7 +68,7 @@ begin
             load(delayed_load_element)
             puts delayed_load_element.to_s    if $DEBUG
           end
-          puts "DONE_LOAD_FILES_FROM_"+directory.to_s.split('/').last.split('.').first.capitalize   if $DEBUG
+          puts "DONE_LOAD_FILES_FROM_"+directory.to_s.split(separator_symbol).last.split('.').first.capitalize   if $DEBUG
 
         end
 
@@ -73,7 +90,7 @@ begin
 
         def error_logger(error_msg,prefix="",log_file=App.log_path)
 
-          ###convert error msg to more humanfriendly one
+          ###convert error msg to more human friendly one
           begin
             error_msg= error_msg.to_s.gsub('", "','",'+"\n\"")
           rescue Exception
