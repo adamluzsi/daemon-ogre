@@ -10,6 +10,7 @@ begin
           arg = Hash[*args]
 
           #directory = File.expand_path(directory)
+          delayed_loads = Array.new
 
           if !arg[:delayed].nil?
             raise ArgumentError, "Delayed items must be in an "+\
@@ -32,35 +33,37 @@ begin
           separator_symbol= String.new
           pre_path.include?('/') ? separator_symbol = '/' : separator_symbol = '\\'
           pre_path= ((pre_path.split(separator_symbol))-([pre_path.split(separator_symbol).pop])).join(separator_symbol)
-          puts pre_path
           end
 
           puts "LOADING_FILES_FROM_"+directory.to_s.split(separator_symbol).last.split('.').first.capitalize if $DEBUG
 
-          delayed_loads = Array.new
+          puts "Elements found in #{directory}"                                                 if $DEBUG
+          puts File.join("#{pre_path}","#{directory}","**","*.#{arg[:type]}")                   if $DEBUG
+          puts Dir[File.join("#{pre_path}","#{directory}","**","*.#{arg[:type]}")].sort.inspect if $DEBUG
 
+          Dir[File.join("#{pre_path}","#{directory}","**","*.#{arg[:type]}")].sort.each do |file|
 
-          puts File.join("#{pre_path}","#{directory}","**","*.#{arg[:type]}")
-          puts Dir[File.join("#{pre_path}","#{directory}","**","*.#{arg[:type]}")].inspect
-
-          Dir[File.join("#{pre_path}","#{directory}","**","*.#{arg[:type]}")].each do |file|
-
-
-            arg[:delayed]= [nil] if arg[:delayed].nil?
+            arg[:delayed]=  [nil] if arg[:delayed].nil?
             arg[:excluded]= [nil] if arg[:excluded].nil?
 
             arg[:excluded].each do |except|
               if file.split(separator_symbol).last.split('.').first == except.to_s.split('.').first
+
                 puts file.to_s + " cant be loaded because it's an exception" if $DEBUG
+
               else
+
                 arg[:delayed].each do |delay|
+
                   if file.split(separator_symbol).last.split('.').first == delay.to_s.split('.').first
                     delayed_loads.push(file)
                   else
                     load(file)
                     puts file.to_s if $DEBUG
                   end
+
                 end
+
               end
             end
           end
@@ -68,7 +71,7 @@ begin
             load(delayed_load_element)
             puts delayed_load_element.to_s    if $DEBUG
           end
-          puts "DONE_LOAD_FILES_FROM_"+directory.to_s.split(separator_symbol).last.split('.').first.capitalize   if $DEBUG
+          puts "DONE_LOAD_FILES_FROM_"+directory.to_s.split(separator_symbol).last.split('.').first.capitalize if $DEBUG
 
         end
 
@@ -115,13 +118,26 @@ begin
           require 'yaml'
           #require "hashie"
 
-          yaml_files = Dir["#{directory}/**/*.yml"].each { |f| puts f.to_s  if $DEBUG  }
-          puts "\nyaml file found: "+yaml_files.inspect.to_s    if $DEBUG
+          begin
+            pre_path = caller[1].split('.rb:').first+('.rb')
+            separator_symbol= String.new
+            pre_path.include?('/') ? separator_symbol = '/' : separator_symbol = '\\'
+            pre_path= ((pre_path.split(separator_symbol))-([pre_path.split(separator_symbol).pop])).join(separator_symbol)
+          end
+
+          puts "Elements found in #{directory}"                                       if $DEBUG
+          puts File.join("#{pre_path}","#{directory}","**","*.yml")                   if $DEBUG
+          puts Dir[File.join("#{pre_path}","#{directory}","**","*.yml")].sort.inspect if $DEBUG
+
+          yaml_files = Dir[File.join("#{pre_path}","#{directory}","**","*.yml")].sort
+
+          puts "\nyaml file found: "+yaml_files.inspect                               if $DEBUG
+
           @result_hash = {}
           yaml_files.each_with_index do |full_path_file_name|
 
 
-            file_name = full_path_file_name.split('/').last.split('.').first
+            file_name = full_path_file_name.split(separator_symbol).last.split(separator_symbol).first
 
             hash_key = file_name
             @result_hash[hash_key] = YAML.load(File.read("#{full_path_file_name}"))
