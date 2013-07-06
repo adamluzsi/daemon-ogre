@@ -22,14 +22,15 @@ begin
             "Array! Example:\n:exclude => ['abc']" if arg[:excluded].class != Array
           end
 
-          arg[:type]= "rb" if arg[:type].nil?
+          arg[:type]= "rb"      if arg[:type].nil?
+          arg[:monkey_patch]= 0 if arg[:monkey_patch].nil?
 
           #=============================================================================================================
 
           ### GET Pre path + validation
           begin
           #get method callers path
-          pre_path = caller[1].split('.rb:').first+('.rb')
+          pre_path = caller[arg[:monkey_patch].to_i].split('.rb:').first+('.rb')
           separator_symbol= String.new
           pre_path.include?('/') ? separator_symbol = '/' : separator_symbol = '\\'
           pre_path= ((pre_path.split(separator_symbol))-([pre_path.split(separator_symbol).pop])).join(separator_symbol)
@@ -113,13 +114,16 @@ begin
           return {:error => error_msg}
         end
 
-        def load_ymls(directory)
+        def load_ymls(directory,*args)
+          arg= Hash[*args]
 
           require 'yaml'
           #require "hashie"
 
+          arg[:monkey_patch]= 0 if arg[:monkey_patch].nil?
+
           begin
-            pre_path = caller[1].split('.rb:').first+('.rb')
+            pre_path = caller[arg[:monkey_patch]].split('.rb:').first+('.rb')
             separator_symbol= String.new
             pre_path.include?('/') ? separator_symbol = '/' : separator_symbol = '\\'
             pre_path= ((pre_path.split(separator_symbol))-([pre_path.split(separator_symbol).pop])).join(separator_symbol)
@@ -515,10 +519,13 @@ begin
     DaemonOgre.process_running?(input)
   end
   def require_directory(directory,*args)
-    DaemonOgre.load_directory(directory,*args)
+    DaemonOgre.load_directory(directory,{:monkey_patch => 1},*args)
   end
   def require_ymls(directory)
-    DaemonOgre.load_ymls(directory)
+    DaemonOgre.load_ymls(
+        directory,
+        {:monkey_patch => 1}
+    )
   end
   def get_port(port,max_port=65535 ,host="0.0.0.0")
     DaemonOgre.get_port(port,max_port,host)
