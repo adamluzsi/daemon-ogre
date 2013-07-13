@@ -29,12 +29,22 @@ begin
 
           ### GET Pre path + validation
           begin
-          #get method callers path
-          pre_path = caller[arg[:monkey_patch].to_i].split('.rb:').first+('.rb')
-          separator_symbol= String.new
-          pre_path.include?('/') ? separator_symbol = '/' : separator_symbol = '\\'
-          pre_path= ((pre_path.split(separator_symbol))-([pre_path.split(separator_symbol).pop])).join(separator_symbol)
+            #get method callers path
+
+            pre_path = caller[arg[:monkey_patch].to_i].split('.rb:').first+('.rb')
+
+            if !pre_path.include?('/') && !pre_path.include?('\\')
+              pre_path = File.expand_path(pre_path)
+            end
+
+            separator_symbol= String.new
+            pre_path.include?('/') ? separator_symbol = '/' : separator_symbol = '\\'
+
+            pre_path= ((pre_path.split(separator_symbol))-([pre_path.split(separator_symbol).pop])).join(separator_symbol)
+
           end
+
+          puts "prepath: "+pre_path.inspect if $DEBUG
 
           puts "LOADING_FILES_FROM_"+directory.to_s.split(separator_symbol).last.split('.').first.capitalize if $DEBUG
 
@@ -122,8 +132,14 @@ begin
 
           arg[:monkey_patch]= 0 if arg[:monkey_patch].nil?
 
+
+          ### GET Pre path + validation
           begin
-            pre_path = caller[arg[:monkey_patch]].split('.rb:').first+('.rb')
+            #get method callers path
+            pre_path = caller[arg[:monkey_patch].to_i].split('.rb:').first+('.rb')
+            if !pre_path.include?('/') && !pre_path.include?('\\')
+              pre_path = File.expand_path(pre_path)
+            end
             separator_symbol= String.new
             pre_path.include?('/') ? separator_symbol = '/' : separator_symbol = '\\'
             pre_path= ((pre_path.split(separator_symbol))-([pre_path.split(separator_symbol).pop])).join(separator_symbol)
