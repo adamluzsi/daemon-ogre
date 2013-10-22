@@ -4,6 +4,13 @@ daemon-ogre
 Description
 -----------
 
+The gem will be not updated in the future but redirected to my othere project:
+Procemon
+https://github.com/adamluzsi/procemon
+
+All the functions are implemented and upgraded there from daemon-ogre
+
+
 This gem is made for one purpose. 
 
 Ruby meant to be for easy use, not hardcore coding! 
