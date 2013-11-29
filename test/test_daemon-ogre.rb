@@ -7,11 +7,7 @@ DaemonOgre.start :name      => "api_one",          #this will be the name of the
                  :clear     => true                        # with "start" arguments like :
                                                            #                  ruby my_awsome_app.rb start
 
-begin
-  raise ArgumentError, "wuf"
-rescue Exception => ex
-  ex.logger
-end
+
   
 
 
