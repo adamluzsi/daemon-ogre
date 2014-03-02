@@ -8,8 +8,6 @@ DaemonOgre.start :name      => "api_one",          #this will be the name of the
                                                            #                  ruby my_awsome_app.rb start
 
 
-  
-
 
 #my awesome Hello App
 puts "hello App!"
@@ -17,6 +15,5 @@ puts "hello App!"
 i=0
 until i > 1200
   sleep 1
-  puts "hello, there! A wonderful day for the #{i}. time! isn't it?"
   i+=1
 end
