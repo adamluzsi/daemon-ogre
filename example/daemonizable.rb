@@ -6,6 +6,7 @@ require 'daemon-ogre.rb'
 # to check it's running
 #   `ps aux | grep $0`
 
+ARGVEXT.show_help
 DaemonOgre.init
 
 60.times do

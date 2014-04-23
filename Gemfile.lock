@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    daemon-ogre (2.0.1)
+    daemon-ogre (2.0.2)
       argv (>= 2.1.0)
       tmp (>= 2.0.1)
 
