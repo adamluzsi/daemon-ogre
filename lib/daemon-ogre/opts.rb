@@ -18,6 +18,7 @@ module DaemonOgre
       end
 
       def method_missing method_name, *args
+
         @@tmp_dsl ||= ::TMP.new( self.tmp_folder_path )
 
         if method_name.to_s.reverse[0] == "="
