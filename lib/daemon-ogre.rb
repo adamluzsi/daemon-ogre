@@ -1,6 +1,7 @@
-require File.join File.dirname(__FILE__) , 'daemon-ogre', 'support'
-require File.join File.dirname(__FILE__) , 'daemon-ogre', 'app'
-require File.join File.dirname(__FILE__) , 'daemon-ogre', 'daemon'
-require File.join File.dirname(__FILE__) , 'daemon-ogre', 'server'
-require File.join File.dirname(__FILE__) , 'daemon-ogre', 'mpatch'
-require File.join File.dirname(__FILE__) , 'daemon-ogre', 'startup'
+
+require 'tmp'
+require 'argv'
+
+require 'daemon-ogre/opts'
+require 'daemon-ogre/argv'
+require 'daemon-ogre/daemon'

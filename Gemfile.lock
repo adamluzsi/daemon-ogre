@@ -1,26 +1,21 @@
+PATH
+  remote: .
+  specs:
+    daemon-ogre (2.0.0)
+      argv
+      tmp (>= 2.0.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
-    columnize (0.3.6)
-    debugger (1.5.0)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.0)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.0)
-    git (1.2.5)
-    jeweler (1.8.4)
-      bundler (~> 1.0)
-      git (>= 1.2.5)
-      rake
-      rdoc
+    argv (2.0.0)
     rake (10.0.4)
-    rdoc (3.9.5)
+    tmp (2.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  debugger
-  jeweler (~> 1.8.4)
-  rdoc
+  bundler
+  daemon-ogre!
+  rake

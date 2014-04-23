@@ -1,4 +1,4 @@
-require_relative "../lib/daemon-ogre.rb"
+require_relative "daemon-ogre"
 
 DaemonOgre.start :name      => "api_one",          #this will be the name of the application
                  :log_path  => "./var/log/log_file_name",  #this will be the logfile place and name
