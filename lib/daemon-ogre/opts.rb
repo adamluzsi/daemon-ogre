@@ -4,8 +4,17 @@ module DaemonOgre
     class << self
 
       def tmp_folder_path obj= nil
-        @@path= obj unless obj.nil?
-        @@path || "#{::TMP.folder_path.to_s}_daemon"
+        @@path  ||= nil
+        @@path    = obj unless obj.nil?
+        @@path  ||  "#{::TMP.folder_path.to_s}_daemon"
+      end
+
+      def pid
+        self.pidfile
+      end
+
+      def pid= *args
+        self.pidfile= *args
       end
 
       def method_missing method_name, *args

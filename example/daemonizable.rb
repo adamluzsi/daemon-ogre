@@ -1,4 +1,4 @@
-require_relative File.join '..','lib','daemon-ogre.rb'
+require 'daemon-ogre.rb'
 
 # start as
 #   ruby sample_daemon_app.rb --daemon
@@ -8,7 +8,7 @@ require_relative File.join '..','lib','daemon-ogre.rb'
 
 DaemonOgre.init
 
-10.times do
+60.times do
 
   puts Time.now
   sleep 1
