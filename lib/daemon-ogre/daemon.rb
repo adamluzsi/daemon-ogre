@@ -56,9 +56,6 @@ module DaemonOgre
       # Send stdout and stderr to log files for the child process
       def redirect
 
-        OPTS.out__path__
-        OPTS.err__path__
-
         var= 3
         begin
 
