@@ -1,16 +1,16 @@
 PATH
   remote: .
   specs:
-    daemon-ogre (2.0.2)
+    daemon-ogre (2.0.3)
       argv (>= 2.1.0)
-      tmp (>= 2.0.1)
+      tmp (>= 2.2.2)
 
 GEM
   remote: http://rubygems.org/
   specs:
     argv (2.1.0)
     rake (10.0.4)
-    tmp (2.1.0)
+    tmp (2.2.2)
 
 PLATFORMS
   ruby

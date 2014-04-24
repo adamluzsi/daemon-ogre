@@ -6,6 +6,8 @@ require 'daemon-ogre.rb'
 # to check it's running
 #   `ps aux | grep $0`
 
+puts "app name: #{$0}"
+
 ARGVEXT.show_help
 DaemonOgre.init
 

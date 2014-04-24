@@ -9,7 +9,7 @@ module DaemonOgre
         @@path  ||  "#{::TMP.folder_path.to_s}_daemon"
       end
 
-      def pid
+      def pid *args
         self.pidfile
       end
 

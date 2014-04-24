@@ -56,14 +56,22 @@ module DaemonOgre
       # Send stdout and stderr to log files for the child process
       def redirect
 
-        $stdin.reopen File.join('','dev','null')
+        OPTS.out__path__
+        OPTS.err__path__
 
-        out = File.new File.join(OPTS.tmp_folder_path, "out"), "a"
-        err = File.new File.join(OPTS.tmp_folder_path, "err"), "a"
+        var= 3
+        begin
 
-        $stdout.reopen out
-        $stderr.reopen err
-        $stdout.sync = $stderr.sync = true
+          $stdin.reopen   File.join('','dev','null')
+          $stdout.reopen  OPTS.out__path__
+          $stderr.reopen  OPTS.err__path__
+          $stdout.sync =  $stderr.sync = true
+
+        rescue Errno::ENOENT => ex
+          var -= 1
+          retry if var > 0
+          raise ex.class,ex
+        end
 
       end
 
