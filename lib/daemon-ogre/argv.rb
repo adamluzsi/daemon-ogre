@@ -3,10 +3,14 @@ module DaemonOgre
   module DARGV
     class << self
 
-      def check_args_for *args
+      def check_args_for( *args )
+        args = args.map(&:to_s)
 
-        ::ARGV.flag_syms.each do |element|
-          if args.include?(element)
+        puts ARGV.options
+        exit!
+
+        ::ARGV.options.each do |element|
+          if args.include?(element.to_s)
             return true
           end
         end
@@ -30,7 +34,7 @@ module DaemonOgre
               'Start with one of the following tags the app,',
               'and it will be daemonized'
           ].join(' '),
-          *@@daemon_keys
+          *@@daemon_keys.map(&:to_s)
 
       )
 
@@ -39,7 +43,7 @@ module DaemonOgre
               'Start with one of the following tags the app,',
               'and it will be terminate the running app instance'
           ].join(' '),
-          *@@terminate_keys
+          *@@terminate_keys.map(&:to_s)
       )
 
     end

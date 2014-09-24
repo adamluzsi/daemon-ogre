@@ -1,4 +1,4 @@
-require 'daemon-ogre.rb'
+require 'daemon-ogre'
 
 # start as
 #   ruby sample_daemon_app.rb --daemon
@@ -8,7 +8,7 @@ require 'daemon-ogre.rb'
 
 puts "app name: #{$0}"
 
-ARGVEXT.show_help
+ARGV.show_help
 DaemonOgre.init
 
 60.times do
