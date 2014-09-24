@@ -25,16 +25,22 @@ module DaemonOgre
         check_args_for( *@@terminate_keys )
       end
 
-      ::ARGVEXT.add_help_msg(
-          "Start with one of the following tags the app, and it will be daemonized",
+      ARGV.add_help(
+          [
+              'Start with one of the following tags the app,',
+              'and it will be daemonized'
+          ].join(' '),
           *@@daemon_keys
+
       )
 
-      ::ARGVEXT.add_help_msg(
-          "Start with one of the following tags the app, and it will be terminate the running app instance",
+      ARGV.add_help(
+          [
+              'Start with one of the following tags the app,',
+              'and it will be terminate the running app instance'
+          ].join(' '),
           *@@terminate_keys
       )
-
 
     end
   end

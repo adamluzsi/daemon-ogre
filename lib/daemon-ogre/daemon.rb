@@ -65,9 +65,11 @@ module DaemonOgre
           $stdout.sync =  $stderr.sync = true
 
         rescue Errno::ENOENT => ex
+
           var -= 1
           retry if var > 0
           raise ex.class,ex
+
         end
 
       end
