@@ -2,9 +2,6 @@ require 'daemon-ogre'
 
 # start as
 #   ruby sample_daemon_app.rb --daemon
-#
-# to check it's running
-#   `ps aux | grep $0`
 
 puts "app name: #{$0}"
 
@@ -17,3 +14,7 @@ DaemonOgre.init
   sleep 1
 
 end
+
+sleep 1
+# to check it's running
+`ps aux | grep $0`

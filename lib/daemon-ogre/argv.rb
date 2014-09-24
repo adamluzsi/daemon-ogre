@@ -5,17 +5,7 @@ module DaemonOgre
 
       def check_args_for( *args )
         args = args.map(&:to_s)
-
-        puts ARGV.options
-        exit!
-
-        ::ARGV.options.each do |element|
-          if args.include?(element.to_s)
-            return true
-          end
-        end
-        return false
-
+        return ARGV.options.any?{|opt| args.include?(opt) }
       end
 
       @@daemon_keys= [:daemonize,:daemon,:d]
