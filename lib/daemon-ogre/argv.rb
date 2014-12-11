@@ -5,7 +5,7 @@ module DaemonOgre
 
       def check_args_for( *args )
         args = args.map(&:to_s)
-        return ARGV.options.any?{|opt| args.include?(opt) }
+        return ::ARGV.any?{|argument| args.any?{|string_to_find| argument =~ Regexp.new(string_to_find.to_s)  }}
       end
 
       @@daemon_keys= [:daemonize,:daemon,:d]
@@ -18,23 +18,6 @@ module DaemonOgre
       def terminate?
         check_args_for( *@@terminate_keys )
       end
-
-      ARGV.add_help(
-          [
-              'Start with one of the following tags the app,',
-              'and it will be daemonized'
-          ].join(' '),
-          *@@daemon_keys.map(&:to_s)
-
-      )
-
-      ARGV.add_help(
-          [
-              'Start with one of the following tags the app,',
-              'and it will be terminate the running app instance'
-          ].join(' '),
-          *@@terminate_keys.map(&:to_s)
-      )
 
     end
   end
