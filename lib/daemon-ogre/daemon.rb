@@ -1,10 +1,8 @@
 # use Daemon.daemonize or Process.daemonize
 module DaemonOgre
-
   module Daemon
 
     class << self
-
 
       # Checks to see if the current process is the child process and if not
       # will update the pid file with the child pid.
@@ -174,7 +172,6 @@ module DaemonOgre
     def init
       Daemon.init
     end
-    # alias :new :init
   end
 
 end
